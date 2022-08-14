@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dropdown from "./components/dropdown";
+import Dropdown from "./components/Dropdown";
 //import Search from "./components/Search";
 //import Accordion from "./components/Accordion";
 
@@ -35,13 +35,21 @@ const options = [
 
 const App = () => {
   const [selected, setSelected] = useState(options[0]);
+  const [showDropdown, setShowDropdown] = useState(true);
+
   return (
     <div>
-      <Dropdown
+      <button 
+        onClick={() => setShowDropdown(!showDropdown)}>
+          Toggle Dropdown
+      </button>
+      { showDropdown &&
+        <Dropdown
         onSelectedChange={setSelected}
         selected={selected}
         options={options}
       />
+      }
     </div>
   );
 };
